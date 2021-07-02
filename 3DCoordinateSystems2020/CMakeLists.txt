@@ -10,6 +10,13 @@ project(CyrilStanchisLabCS)
 
 
 include_directories(includes)
+
+add_executable(${PROJECT_NAME} src/3DCS_main.cpp src/3DCS_01.cpp)
+
+
+
+
+
 #include_directories(src)
 #add_subdirectory(src)
 
@@ -17,7 +24,7 @@ include_directories(includes)
 # add the MathFunctions library
 #add_subdirectory(MathFunctionsLib)
 
-add_executable(${PROJECT_NAME} src/3DCS_main.cpp src/3DCS_01.cpp)
+
 
 #To add .h files for project hello world
 #target_include_directories(${PROJECT_NAME} PUBLIC

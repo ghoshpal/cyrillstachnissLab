@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+using std::size_t;
 using std::vector;
 
 namespace CS3D {
@@ -20,6 +21,7 @@ class Vector {
   explicit Vector(const std::size_t size_vect);
   explicit Vector(const vector<elemtype>& init_vect);
   Vector<elemtype>& operator+(const Vector<elemtype>& other);
+  Vector<elemtype>& operator*(const elemtype scale_factor);
 
   std::size_t Size() const;
   void Print() const;
@@ -58,5 +60,33 @@ template <typename elemtype>
 std::size_t Vector<elemtype>::Size() const {
   return elements.size();
 }
+
+template <typename elemtype>
+Vector<elemtype>& Vector<elemtype>::operator*(const elemtype scale_factor) {
+  for (typename std::vector<elemtype>::iterator itr = elements.begin();
+       itr != elements.end(); ++itr) {
+    *itr = *itr * scale_factor;
+  }
+}
+
+// Matrix template
+template <typename elemtype>
+class Matrix {
+ public:
+  Matrix(const size_t row, const size_t column);
+
+  explicit Matrix(const std::vector<vector<elemtype> >& v);
+
+  Matrix<elemtype>& operator+(const Matrix<elemtype>& other);
+
+  Matrix<elemtype>& operator*(const Matrix<elemtype>& other);
+
+  ~Matrix();
+
+ private:
+  std::vector<std::vector<elemtype> > v;
+  size_t col_size;
+  size_t row_size;
+};
 
 }  // namespace CS3D
